@@ -1,7 +1,11 @@
-const express = require('express')
+import config from './config.js'
+import allBooks from './books.js'
+import express from 'express'
 const app = express()
-const allBooks = require('../../../books.json')
-const {getBooksByTitle, port} = require("../helpers");
+
+function getBooksByTitle(books, requestedTitle) {
+    return books.filter(book => book.title.toLowerCase().includes(requestedTitle.toLowerCase()));
+}
 
 app.use(express.json())
 
@@ -11,11 +15,11 @@ app.get('/books', (req, res) => {
     res.send(books)
 })
 
-app.post('/book', (req,res) => {
+app.post('/book', (req, res) => {
     allBooks.push(req.body)
     res.send(book)
 })
 
-app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`)
+app.listen(config.port, () => {
+    console.log(`Server listening at http://localhost:${config.port}`)
 })

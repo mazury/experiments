@@ -3,8 +3,12 @@ const Router = require('koa-router');
 const koaBody = require('koa-body');
 const app = new Koa();
 const router = new Router();
-const allBooks = require('../../../books.json')
-const {getBooksByTitle, port} = require("../helpers");
+const allBooks = require('./books.js')
+const config = require('./config')
+
+function getBooksByTitle(books, requestedTitle) {
+    return books.filter(book => book.title.toLowerCase().includes(requestedTitle.toLowerCase()));
+}
 
 app.use(koaBody());
 
@@ -22,4 +26,4 @@ router
 
 app.use(router.routes())
 
-app.listen(port, () => console.log(`Server listening at http://localhost:${port}`))
+app.listen(config.port, () => console.log(`Server listening at http://localhost:${config.port}`))

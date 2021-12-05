@@ -1,7 +1,11 @@
-const allBooks = require('../../../books.json')
-const feathers = require('@feathersjs/feathers');
-const express = require('@feathersjs/express');
-const {getBooksByTitle, port} = require("../helpers");
+import config from './config.js'
+import allBooks from './books.js'
+import feathers from '@feathersjs/feathers'
+import express from '@feathersjs/express'
+
+function getBooksByTitle(books, requestedTitle) {
+    return books.filter(book => book.title.toLowerCase().includes(requestedTitle.toLowerCase()));
+}
 
 class BookService {
     constructor() {
@@ -35,6 +39,6 @@ server.configure(express.rest());
 server.use('/books', new BookService());
 server.use(express.errorHandler());
 
-server.listen(port).on('listening', () =>
+server.listen(config.port).on('listening', () =>
     console.log('Feathers server listening on localhost:3030')
 );

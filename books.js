@@ -1,4 +1,4 @@
-[
+const books = [
   {
     "title": "Eloquent JavaScript, Third Edition",
     "author": "Marijn Haverbeke"
@@ -32,3 +32,5 @@
     "author": "Caitlin Sadowski, Thomas Zimmermann"
   }
 ]
+
+export default books
