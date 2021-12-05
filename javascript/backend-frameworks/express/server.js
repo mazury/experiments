@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const allBooks = require('../../books.json')
+const allBooks = require('../../../books.json')
 const {getBooksByTitle, port} = require("../helpers");
 
 app.use(express.json())

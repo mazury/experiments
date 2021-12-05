@@ -1,4 +1,4 @@
-const allBooks = require('../../books.json')
+const allBooks = require('../../../books.json')
 const feathers = require('@feathersjs/feathers');
 const express = require('@feathersjs/express');
 const {getBooksByTitle, port} = require("../helpers");

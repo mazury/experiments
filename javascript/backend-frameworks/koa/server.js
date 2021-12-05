@@ -3,7 +3,7 @@ const Router = require('koa-router');
 const koaBody = require('koa-body');
 const app = new Koa();
 const router = new Router();
-const allBooks = require('../../books.json')
+const allBooks = require('../../../books.json')
 const {getBooksByTitle, port} = require("../helpers");
 
 app.use(koaBody());
